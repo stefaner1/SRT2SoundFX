@@ -1,2 +1,5 @@
 *.pyc
 *.srt
+.env
+/resources
+__pycache__

@@ -1,5 +1,5 @@
 import unittest
-from src.audio_placer import place_audio
+from src.audio_placer import AudioPlacer
 
 class TestAudioPlacer(unittest.TestCase):
 
@@ -7,21 +7,24 @@ class TestAudioPlacer(unittest.TestCase):
         self.sound_effects = [
             {
                 'id': '1',
-                'start': '00:00:01,000',
-                'end': '00:00:02,000',
-                'sound_effect': 'sound_effect_1.mp3'
+                'start': 1,
+                'end': 5,
+                'audio_path': '/app/tests/resources/1.mp3'
             },
             {
                 'id': '2',
-                'start': '00:00:03,000',
-                'end': '00:00:04,000',
-                'sound_effect': 'sound_effect_2.mp3'
+                'start': 6,
+                'end': 8,
+                'audio_path': '/app/tests/resources/2.mp3'
             }
         ]
+        self.audiobook_file="/app/resources/audiobook.mp3"
+        self.temp_dir="/app/resources"
 
     def test_place_audio(self):
-        result = place_audio(self.sound_effects)
-        self.assertEqual(result, True)
+        audio_placer=AudioPlacer()
+        result = audio_placer.add_sounds_to_audio(self.audiobook_file, self.sound_effects, self.temp_dir)
+        self.assertTrue(result)
 
 if __name__ == '__main__':
     unittest.main()

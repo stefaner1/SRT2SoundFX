@@ -15,7 +15,7 @@ class TestSoundGenerator(unittest.TestCase):
             self.assertIn('id', sound)
             self.assertIn('start', sound)
             self.assertIn('end', sound)
-            self.assertIn('audio', sound)
+            self.assertIn('audio_path', sound)
 
 if __name__ == '__main__':
     unittest.main()

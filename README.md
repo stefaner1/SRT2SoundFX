@@ -8,36 +8,28 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-You need Python 3.7 or later to run the project. You can have multiple Python versions (2.x and 3.x) installed on the same system without problems.
+Docker Compose installed.
 
-In Ubuntu, Mint and Debian you can install Python 3 like this:
-
-```
-$ sudo apt-get install python3 python3-pip
-```
-
-For other Linux flavors, macOS and Windows, packages are available at
-
-https://www.python.org/getit/
 
 ### Installing
 
 The first step is to clone the repository:
 
 ```
-$ git clone https://github.com/yourusername/my-python-project.git
+$ git clone https://github.com/stefaner1/srt_2_sound_effects.git
 ```
 
 Then, navigate to the project folder:
 
 ```
-$ cd my-python-project
+$ cd srt_2_sound_effects
 ```
 
-Next, install the dependencies:
+Next, run docker:
 
 ```
-$ pip install -r requirements.txt
+$ docker-compose up
+
 ```
 
 ## Running the Tests
@@ -59,7 +51,7 @@ $ python -m unittest discover
 Navigate back to the src directory:
 
 ```
-$ cd ../src
+$ cd /app
 ```
 
 Then, run the application:
@@ -74,18 +66,7 @@ $ python main.py
 * [ChatGPT](https://openai.com/research/chatgpt) - Used to generate sound effect prompts
 * [ElevenLabs API](https://www.eleven-labs.com/) - Used to generate sounds
 
-## Authors
-
-* **Your Name** - *Initial work* - [YourUsername](https://github.com/yourusername)
-
-See also the list of [contributors](https://github.com/yourusername/my-python-project/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
