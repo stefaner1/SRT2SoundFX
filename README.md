@@ -1,4 +1,4 @@
-# My Python Project
+# SRT2SoundFX
 
 This project is an audiobook sound effect generator based on SRT files. It parses SRT files, sends the elements to ChatGPT for sound effect prompts, merges the prompts with the SRT elements, generates sounds using the ElevenLabs API, and places the audio on an MP3 timeline.
 
@@ -69,4 +69,4 @@ $ python main.py
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License.
