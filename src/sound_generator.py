@@ -19,7 +19,7 @@ def generate_sounds(elements, project_name='audiobook'):
         try:
             result = elevenlabs.text_to_sound_effects.convert(
                 text=element['prompt'],
-                # duration_seconds=10,  # Optional, if not provided will automatically determine the correct length
+                duration_seconds=element["duration"],  # Optional, if not provided will automatically determine the correct length
                 prompt_influence=0.3,  # Optional, if not provided will use the default value of 0.3
             )
             results_path=os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),'resources')

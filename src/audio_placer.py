@@ -23,7 +23,8 @@ class AudioPlacer:
             
             silence_duration = sentence['start'] - current_time
             if silence_duration < 0:
-                continue
+                sentence['start']=current_time
+                print(f"The last audio was too long, so there is no pause between sentences. Current sentence: {str(sentence)}")     
                 # raise Exception("Error processing audio chunk", f"The sentence audio is broken. Wrong silence_duration: {silence_duration}, sentence {str(sentence)}")
             if silence_duration > 0:
                 # Add silence audio
@@ -32,10 +33,12 @@ class AudioPlacer:
                 i += 1
 
             audio_file_path = os.path.join(sentence['audio_path'])
-            ffmpeg_cmd.extend(['-i', audio_file_path])
+            audio_duration = self.get_audio_duration(audio_file_path)
+            fade_duration= (1 if audio_duration>5 else 0.5) if audio_duration>2 else 0.2
+            audio_faded_file_path = self.apply_afade(audio_file_path, audio_duration, fade_duration)
+            ffmpeg_cmd.extend(['-i', audio_faded_file_path])
             filter_complex_parts.append(f"[{i}:a]")
             i += 1
-            audio_duration = self.get_audio_duration(audio_file_path)
                 
             current_time = sentence['start']+audio_duration
 
@@ -60,6 +63,16 @@ class AudioPlacer:
             raise Exception("Error processing audio chunk", error_message)
 
         return chunk_audio_path
+    
+    def apply_afade(self, audio_path, audio_duration, fade_duration=0.5):
+        new_audio_path= audio_path.replace(".mp3", "_faded.mp3")
+        ffmpeg_cmd= ['ffmpeg', '-y', '-i', audio_path, '-af', f'afade=t=in:st=0:d={fade_duration},afade=t=out:st={audio_duration-fade_duration}:d={fade_duration}', '-q:a', '0', new_audio_path]
+        result = subprocess.run(ffmpeg_cmd, capture_output=True, text=True)
+        if result.returncode != 0:
+            error_message = result.stderr.strip()
+            raise Exception("Error applying fade effect", error_message)
+        return new_audio_path
+        
     def merge_effects(self, sentences, temp_dir, final_audio_name):
         
         CHUNK_SIZE = 100  # Define your chunk size

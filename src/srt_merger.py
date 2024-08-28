@@ -7,13 +7,9 @@ class SrtMerger:
         merged_elements = []
         for prompt in self.chatgpt_prompts:
             srt_element = next(element for element in self.srt_elements if element['id'] == prompt['id'])
-            merged_element = {
-                    'start': srt_element['start'],
-                    'end': srt_element['end'],
-                    'prompt': prompt['prompt'],
-                    'text': srt_element['text'],
-                    'id': srt_element['id']
-                }
+            merged_element = srt_element.copy()
+            merged_element.update(prompt)
+
             merged_elements.append(merged_element)
 
         return merged_elements

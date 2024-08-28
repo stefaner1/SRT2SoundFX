@@ -13,10 +13,10 @@ load_dotenv()
 def main():
     parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-    srt_path=os.path.join(parent_dir, "resources", "audiobook_small.srt")
+    srt_path=os.path.join(parent_dir, "resources", "audiobook.srt")
     audiobook_path=os.path.join(parent_dir, "resources", "audiobook.mp3")
     temp_dir=os.path.join(parent_dir, "resources")
-    project_name='audiobook'
+    project_name='audiobook_v2'
 
     # if file project_name sounds.json exists
     results_path=os.path.join(parent_dir,'resources')
@@ -36,11 +36,10 @@ def main():
         merged_elements = srt_merger.merge_prompts()
 
         # Generate sounds for each element
-        sounds = generate_sounds(merged_elements)
+        sounds = generate_sounds(merged_elements, project_name)
 
     # Place the generated audio on an MP3 timeline
     audio_placer=AudioPlacer()
-    result = audio_placer.add_sounds_to_audio(audiobook_path, sounds, temp_dir)
-
+    result = audio_placer.add_sounds_to_audio(audiobook_path, sounds, temp_dir, final_audiobook_name=f"{project_name}_final_with_effects.mp3", final_effects_name=f"{project_name}_effects.mp3")
 if __name__ == "__main__":
     main()

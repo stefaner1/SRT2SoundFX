@@ -38,7 +38,14 @@ async def process_elements_chunks(elements):
             {"role": "system", "content": "You are an audiobook sound effect specialist."},
             {
                 "role": "user",
-                "content": f"Below are {len(elements)} text snippets in CSV format. For each snippet, determine if a sound effect is really needed. If a sound effect is needed, specify what it should be. \n REMEMBER: \n1. Exclude sounds like speech (yelling, shouting etc.), emotions, minor actions like 'looking'. \n2. Prioritize quality over quantity—fewer, more impactful sounds are better. \n3. Avoid repetition (e.g., if snippets 2 and 3 are similar, do not suggest sounds effects for both). \n\n-------\n\n TEXT SNIPPETS:\n{texts}\n\n -------"
+                "content": f"Below are {len(elements)} text snippets in CSV format. For each snippet, determine if a sound effect is really needed. If a sound effect is needed, specify what it should be and ensure it is a single, simple sound effect that includes the words 'high-quality'. \n" 
+                "REMEMBER: \n"
+                "1. Exclude sounds like speech (yelling, shouting, etc.), emotions, minor actions like 'looking', and any sounds that could last more than 22 seconds. \n"
+                "2. Prioritize quality over quantity—fewer, more impactful sounds are better. \n"
+                "3. Avoid repetition (e.g., if snippets 2 and 3 are similar, do not suggest sound effects for both). \n"
+                f"4. Ensure you return at least {int(len(elements) * 0.1)} sound effects. \n"
+                "-------\n\n TEXT SNIPPETS:\n"
+                f"{texts}\n\n -------"
             }
         ],
         functions=[{
@@ -53,19 +60,24 @@ async def process_elements_chunks(elements):
                             "type": "object",
                             "properties": {
                                 "id": {"type": "integer", "description": "The ID of the element."},
-                                "prompt": {"type": "string", "description": "The sound effect description."}
+                                "prompt": {"type": "string", "description": "The sound effect description."},
+                                "duration": {"type": "number", "description": "The duration of the sound effect in seconds.", "minimum": 1, "maximum": 22}
                             },
-                            "required": ["id", "prompt"]
+                            "required": ["id", "prompt", "duration"]
                         }
                     }
                 },
                 "required": ["elements"]
             }
         }]
-    )
+        )
 
     # Extract the sound effects from the response
-    if response.choices[0].message.function_call is not None:
+    if response.choices[0].message.content is not None and response.choices[0].message.function_call is None:
+        # rerun the prompt
+        prompts= await process_elements_chunks(elements)
+
+    elif response.choices[0].message.function_call is not None:
         prompts = json.loads(response.choices[0].message.function_call.arguments)["elements"]
     else:
         prompts = []
