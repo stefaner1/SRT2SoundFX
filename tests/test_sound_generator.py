@@ -4,12 +4,12 @@ from src.sound_generator import generate_sounds
 class TestSoundGenerator(unittest.TestCase):
     def setUp(self):
         self.srt_elements = [
-            {'id': 1, 'start': '00:00:01,000', 'end': '00:00:02,000', 'prompt': 'sound of rain'},
-            {'id': 2, 'start': '00:00:03,000', 'end': '00:00:04,000', 'prompt': 'sound of thunder'},
+            {'id': 1, 'start': '00:00:01,000', 'end': '00:00:02,000', 'prompt': 'sound of rain', 'duration': 1},
+            {'id': 2, 'start': '00:00:03,000', 'end': '00:00:04,000', 'prompt': 'sound of thunder', 'duration': 1},
         ]
 
     def test_generate_sounds(self):
-        sounds = generate_sounds(self.srt_elements)
+        sounds = generate_sounds(self.srt_elements, "test")
         self.assertEqual(len(sounds), len(self.srt_elements))
         for sound in sounds:
             self.assertIn('id', sound)
