@@ -23,6 +23,8 @@ RUN apt install -y ca-certificates --no-install-recommends && rm -rf /var/lib/ap
 
 ADD . /app
 
+WORKDIR /app
+
 RUN pip3 install -r requirements.txt
 
-WORKDIR /app
+

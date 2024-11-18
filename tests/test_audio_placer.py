@@ -1,5 +1,5 @@
 import unittest
-from src.audio_placer import AudioPlacer
+from src.srt2soundfx.audio_placer import AudioPlacer
 
 class TestAudioPlacer(unittest.TestCase):
 
@@ -18,8 +18,8 @@ class TestAudioPlacer(unittest.TestCase):
                 'audio_path': '/app/tests/resources/2.mp3'
             }
         ]
-        self.audiobook_file="/app/resources/audiobook.mp3"
-        self.temp_dir="/app/resources"
+        self.audiobook_file="/app/tests/resources/audiobook.mp3"
+        self.temp_dir="/app/tests/resources/"
 
     def test_place_audio(self):
         audio_placer=AudioPlacer()

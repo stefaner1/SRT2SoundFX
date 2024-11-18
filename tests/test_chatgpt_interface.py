@@ -1,6 +1,6 @@
 import unittest
 import asyncio
-from src.chatgpt_interface import send_to_chatgpt
+from src.srt2soundfx.chatgpt_interface import send_to_chatgpt
 from dotenv import load_dotenv
 
 

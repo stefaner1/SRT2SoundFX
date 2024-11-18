@@ -1,5 +1,6 @@
 import unittest
-from src.sound_generator import generate_sounds
+from src.srt2soundfx.sound_generator import generate_sounds
+import os
 
 class TestSoundGenerator(unittest.TestCase):
     def setUp(self):
@@ -9,7 +10,8 @@ class TestSoundGenerator(unittest.TestCase):
         ]
 
     def test_generate_sounds(self):
-        sounds = generate_sounds(self.srt_elements, "test")
+        save_dir= os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+        sounds = generate_sounds(self.srt_elements, save_dir, "test")
         self.assertEqual(len(sounds), len(self.srt_elements))
         for sound in sounds:
             self.assertIn('id', sound)

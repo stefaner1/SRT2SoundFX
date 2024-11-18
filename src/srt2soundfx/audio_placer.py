@@ -145,7 +145,7 @@ class AudioPlacer:
         # Combine the effects audio files
         combined_audio_path = self.merge_effects(sentences, temp_dir, final_effects_name)
 
-        # Add the combined effects to the audiobook
+        # Add the combined effects to the audio
         final_audiobook_path = self.sounds_to_audiobook(audiobook_path, combined_audio_path, temp_dir, final_audiobook_name, volume_adjustment)
 
-        return final_audiobook_path, combined_audio_path
+        return {"effects": combined_audio_path, "final_audio": final_audiobook_path}

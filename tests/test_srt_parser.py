@@ -1,5 +1,5 @@
 import unittest
-from src.srt_parser import parse_srt
+from src.srt2soundfx.srt_parser import parse_srt
 import os
 
 class TestSrtParser(unittest.TestCase):

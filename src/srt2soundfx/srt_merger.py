@@ -11,6 +11,8 @@ class SrtMerger:
             merged_element.update(prompt)
 
             merged_elements.append(merged_element)
+        return merged_elements
+
     def format_timecode(self, seconds):
             milliseconds = int((seconds - int(seconds)) * 1000)
             total_seconds = int(seconds)
@@ -19,6 +21,7 @@ class SrtMerger:
             secs = total_seconds % 60
             timecode = f"{hours:02}:{minutes:02}:{secs:02},{milliseconds:03}"
             return timecode
+            
     def create_srt_file(self, elements):
         result_srt = ''
         for idx, element in enumerate(elements):

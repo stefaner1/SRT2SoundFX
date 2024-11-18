@@ -1,0 +1,92 @@
+[
+    {
+        "id": 10,
+        "start": 30.3,
+        "end": 33.0,
+        "text": " Na horyzoncie za maja czuły sylwetki okrętów.",
+        "prompt": "high-quality sound of a ship horn blasting in the distance",
+        "duration": 3.0,
+        "audio_path": "/app/tests/resources/audiobook.mp3_10.mp3"
+    },
+    {
+        "id": 35,
+        "start": 116.5,
+        "end": 118.2,
+        "text": " Zaraz im zrobimy abordaż.",
+        "prompt": "high-quality sound of a sword being drawn from a sheath",
+        "duration": 4.0,
+        "audio_path": "/app/tests/resources/audiobook.mp3_35.mp3"
+    },
+    {
+        "id": 38,
+        "start": 124.9,
+        "end": 128.1,
+        "text": " Nawigator odjął lunetę od ok i przełknął ślinę.",
+        "prompt": "high-quality sound of someone swallowing nervously",
+        "duration": 2.0,
+        "audio_path": "/app/tests/resources/audiobook.mp3_38.mp3"
+    },
+    {
+        "id": 39,
+        "start": 128.4,
+        "end": 131.3,
+        "text": " Oni szykują się do ostrzału.",
+        "prompt": "high-quality sound of cannon fire echoing over water",
+        "duration": 6.0,
+        "audio_path": "/app/tests/resources/audiobook.mp3_39.mp3"
+    },
+    {
+        "id": 41,
+        "start": 134.1,
+        "end": 138.1,
+        "text": " Wyrwał z jego ręki lunetę na grób mojej \npierwszej żony.",
+        "prompt": "high-quality sound of a telescope being pulled away from a surface",
+        "duration": 3,
+        "audio_path": "/app/tests/resources/audiobook.mp3_41.mp3"
+    },
+    {
+        "id": 71,
+        "start": 235.7,
+        "end": 240.6,
+        "text": " Armatnia kula trafiła właśnie w burtę \npłynącego obok nich okrętu, a potem",
+        "prompt": "high-quality sound of a cannonball hitting a ship",
+        "duration": 4,
+        "audio_path": "/app/tests/resources/audiobook.mp3_71.mp3"
+    },
+    {
+        "id": 73,
+        "start": 243.4,
+        "end": 245.3,
+        "text": " Powietrze rozdarły piekielne wrzaski",
+        "prompt": "high-quality sound of piercing screams and chaos on a ship",
+        "duration": 5,
+        "audio_path": "/app/tests/resources/audiobook.mp3_73.mp3"
+    },
+    {
+        "id": 76,
+        "start": 247.9,
+        "end": 253.8,
+        "text": " okrętu, rozpętała się pożogę, ludzie \npłonęli żywcem, skakali do wody by ugasić",
+        "prompt": "high-quality sound of people jumping into water and splashing",
+        "duration": 6,
+        "audio_path": "/app/tests/resources/audiobook.mp3_76.mp3"
+    },
+    {
+        "id": 87,
+        "start": 281.2,
+        "end": 285.8,
+        "text": " Zwrot przez rufę szoty, luzuj cała",
+        "prompt": "high-quality ship rigging adjustment sound, representing the tension and effort of maneuvering",
+        "duration": 5,
+        "audio_path": "/app/tests/resources/audiobook.mp3_87.mp3"
+    },
+    {
+        "id": 88,
+        "start": 285.8,
+        "end": 292.8,
+        "text": " naprzód, zawołał eryk, a jego komenda \nrozniosła się po falach bałtyku.",
+        "prompt": "high-quality sound of waves crashing and a sailor's command echoing over the sea",
+        "duration": 10,
+        "audio_path": "/app/tests/resources/audiobook.mp3_88.mp3"
+    }
+]

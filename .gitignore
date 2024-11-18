@@ -1,5 +1,7 @@
 *.pyc
-*.srt
 .env
 /resources
 __pycache__
+dist
+*srt2soundfx.egg-info
+build

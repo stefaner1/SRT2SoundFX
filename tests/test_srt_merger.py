@@ -1,5 +1,5 @@
 import unittest
-from src.srt_merger import SrtMerger
+from src.srt2soundfx.srt_merger import SrtMerger
 
 class TestSrtMerger(unittest.TestCase):
 

@@ -1,13 +1,19 @@
 import os, io, csv, json
 import asyncio
-from openai import AzureOpenAI
+from openai import AzureOpenAI, OpenAI
 from itertools import islice
 
-client = AzureOpenAI(
-    api_key=os.getenv("AZURE_OPENAI_API_KEY"),
-    api_version="2023-12-01-preview",
-    azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
-)
+def get_openai_client():
+    # Initialize the client based on available API key
+    if os.getenv("OPENAI_API_KEY")!='':
+        client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+    else:
+        client = AzureOpenAI(
+            api_key=os.getenv("AZURE_OPENAI_API_KEY"),
+            api_version="2023-12-01-preview",
+            azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT"),
+        )
+    return client
 
 def chunk_elements(elements, each_chunk_size=40):
     it = iter(elements)
@@ -29,13 +35,14 @@ def convert_to_csv(elements):
 
 # Function to process 40 elements in one prompt
 async def process_elements_chunks(elements):
+    client = get_openai_client()
     texts = convert_to_csv(elements) # "\n".join([f"ID: {element['id']}, Text: {element['text']}" for element in elements])
 
     sleep_time = [0.1, 0.5, 1, 2, 3, 6]  # 6 times
     for minutes in sleep_time:  
         try:
             response = client.chat.completions.create(
-                model="gpt-4o",
+                model="gpt-4o-mini" if isinstance(client, OpenAI) else "gpt-4o",
                 messages=[
                     {"role": "system", "content": "You are an audiobook sound effect specialist."},
                     {

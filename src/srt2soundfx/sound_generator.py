@@ -29,7 +29,7 @@ def generate_sound_effect(element,  idx, project_name='audiobook'):
         print(f"Error generating sound for element {element['id']}: {e}")
         return None, idx
 
-def generate_sounds(elements, project_name='audiobook', max_workers=5):
+def generate_sounds(elements, save_dir, project_name='audiobook', max_workers=5):
     """
     This function takes the new list of SRT elements from `merge_prompts` and generates sounds for each element using the ElevenLabs API.
     """
@@ -45,8 +45,10 @@ def generate_sounds(elements, project_name='audiobook', max_workers=5):
             output_path, idx = future.result()
             elements[idx]["audio_path"] = output_path  # Store the result in the correct order
             # Save
-            results_path=os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),'resources')
+            results_path=os.path.join(save_dir,'resources')
             save_path = os.path.join(results_path, f"{project_name}_sounds.json")
+            
+            os.makedirs(os.path.dirname(save_path), exist_ok=True)
             with open(save_path, 'w', encoding='utf-8') as f:
                 json.dump(elements, f, ensure_ascii=False, indent=4)
 
