@@ -127,6 +127,7 @@ Due to limitations of the ElevenLabs API, sound effects longer than 22 seconds w
 
 * [ ] Add other options for sound effects generation like open source: [AudioLDM](https://github.com/haoheliu/AudioLDM)
 * [ ] Add option to select open source Llama LLM or similar for creating sound effects prompts
+* [ ] Set predefined sound effects library to speed things up for short video reels
 
 ## Developing
 
