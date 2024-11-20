@@ -10,7 +10,7 @@ class TestSoundGenerator(unittest.TestCase):
         ]
 
     def test_generate_sounds(self):
-        save_dir= os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+        save_dir= os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))), "tests")
         sounds = generate_sounds(self.srt_elements, save_dir, "test")
         self.assertEqual(len(sounds), len(self.srt_elements))
         for sound in sounds:

@@ -1,5 +1,5 @@
 # SRT2SoundFX
-[![PyPI package](https://img.shields.io/badge/pip%20install-srt2soundfx-brightgreen)](https://pypi.org/project/srt2soundfx/) [![version number](https://img.shields.io/pypi/v/srt2soundfx?color=green&label=version)](https://github.com/stefaner1/srt2soundfx/releases) ![License](https://img.shields.io/github/license/stefaner1/srt2soundfx)
+[![PyPI package](https://img.shields.io/badge/pip%20install-srt2soundfx-brightgreen)](https://pypi.org/project/srt2soundfx/) [![version number](https://img.shields.io/pypi/v/srt2soundfx?color=green&label=version)](https://github.com/stefaner1/srt2soundfx/releases) ![License](https://img.shields.io/github/license/stefaner1/srt2soundfx?v=1.1)
 
 This project is a sound effect generator for audiobooks, videos, and recordings based on SRT files. It parses SRT files, sends the elements to ChatGPT for sound effect prompts, merges the prompts with the SRT elements, generates sounds using the ElevenLabs API, and places the audio on an MP3 timeline.
 
@@ -27,7 +27,7 @@ pip install srt2soundfx
 Here is an example of how to use the Srt2SoundFX class in your code:
 
 ```python
-from srt2soundfx.main import Srt2SoundFX
+from srt2soundfx.core import Srt2SoundFX
 
 # Initialize the Srt2SoundFX class with your API keys
 # Choose between Azure OpenAI and OpenAI by providing the respective API keys
@@ -58,7 +58,7 @@ The Srt2SoundFX project supports all languages that are supported by ChatGPT (e.
 Here is a complete example:
 
 ```python
-from srt2soundfx.main import Srt2SoundFX
+from srt2soundfx.core import Srt2SoundFX
 
 # Initialize the Srt2SoundFX class
 srt2soundfx = Srt2SoundFX(
@@ -116,6 +116,12 @@ If you process an audio file along with the SRT file, the result variable contai
 - `effects`: Path to the audiobook with the sound effects added.
 - `final_audio`: Path to the standalone audio effects timeline.
 
+## Example Results of End Product
+Due to limitations of the ElevenLabs API, sound effects longer than 22 seconds were added manually, and some sound effects were deleted. Below are examples of audiobooks where this tool was used:
+
+[Audiobook in German](https://www.youtube.com/watch?v=RZadKUaIZcs&t=283)
+
+[Audiobook in Polish](https://www.youtube.com/watch?v=1sAAcvZulqA&t=236)
 
 ## Developing
 

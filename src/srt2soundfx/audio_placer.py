@@ -1,7 +1,6 @@
 import os, concurrent
 import subprocess
 import tempfile
-from pydub import AudioSegment
 
 class AudioPlacer:
         

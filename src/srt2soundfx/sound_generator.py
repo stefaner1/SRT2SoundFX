@@ -8,7 +8,7 @@ load_dotenv()
 
 import concurrent.futures
 
-def generate_sound_effect(element,  idx, project_name='audiobook'):
+def generate_sound_effect(element, idx, save_dir, project_name='audiobook'):
     if element.get("audio_path"):
         return element["audio_path"], idx
 
@@ -19,8 +19,7 @@ def generate_sound_effect(element,  idx, project_name='audiobook'):
             duration_seconds=element["duration"],  # Optional, if not provided will automatically determine the correct length
             prompt_influence=0.3,  # Optional, if not provided will use the default value of 0.3
         )
-        results_path=os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),'resources')
-        output_path = os.path.join(results_path, f"{project_name}_{element['id']}.mp3")
+        output_path = os.path.join(save_dir, f"{project_name}_{element['id']}.mp3")
         with open(output_path, "wb") as f:
             for chunk in result:
                 f.write(chunk)
@@ -37,7 +36,7 @@ def generate_sounds(elements, save_dir, project_name='audiobook', max_workers=5)
     # Use ThreadPoolExecutor with a maximum of 5 workers for concurrent execution
     with concurrent.futures.ThreadPoolExecutor(max_workers=max_workers) as executor:
         # Submit tasks to the executor
-        futures = {executor.submit(generate_sound_effect, element, idx, project_name): idx for idx, element in enumerate(elements)}
+        futures = {executor.submit(generate_sound_effect, element, idx, save_dir, project_name): idx for idx, element in enumerate(elements)}
 
         # Collect results as tasks complete
         for future in concurrent.futures.as_completed(futures):
@@ -53,10 +52,9 @@ def generate_sounds(elements, save_dir, project_name='audiobook', max_workers=5)
                 json.dump(elements, f, ensure_ascii=False, indent=4)
 
     return elements
-def rerun_generate_sounds(project_name='audiobook'):
+def rerun_generate_sounds(save_dir, project_name='audiobook'):
     # open the json file
-    results_path=os.path.join(os.path.dirname(os.path.dirname(os.path.realpath(__file__))),'resources')
-    save_path = os.path.join(results_path, f"{project_name}_sounds.json")
+    save_path = os.path.join(save_dir, f"{project_name}_sounds.json")
     with open(save_path, 'r', encoding='utf-8') as f:
         elements = json.load(f)
 

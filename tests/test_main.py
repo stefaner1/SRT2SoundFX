@@ -2,7 +2,7 @@ import unittest
 from unittest.mock import patch, MagicMock
 import os
 from dotenv import load_dotenv
-from src.srt2soundfx.main import Srt2SoundFX  
+from src.srt2soundfx.core import Srt2SoundFX  
 
 
 class TestSrt2SoundFX(unittest.TestCase):

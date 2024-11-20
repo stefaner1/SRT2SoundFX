@@ -26,7 +26,7 @@ class Srt2SoundFX:
         results_path = os.path.dirname(srt_path)
         save_path = os.path.join(results_path, f"{project_name}_sounds.json")
         if os.path.exists(save_path):
-            sounds = rerun_generate_sounds(project_name)
+            sounds = rerun_generate_sounds(save_dir, project_name)
         else:
             # Parse the SRT file
             srt_elements = parse_srt(srt_path)

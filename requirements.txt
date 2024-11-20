@@ -1,6 +1,3 @@
-numpy==1.21.2
-pandas==1.3.3
 openai==1.42.0
-pydub==0.25.1
 python-dotenv
 elevenlabs==1.7.0

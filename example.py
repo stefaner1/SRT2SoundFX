@@ -1,6 +1,6 @@
 import os
 import asyncio
-from srt2soundfx.main import Srt2SoundFX
+from srt2soundfx.core import Srt2SoundFX
 from dotenv import load_dotenv
 
 async def main():
