@@ -1,5 +1,7 @@
 name: Publish Python Package
 
+#  To run it use cmd: git tag v*.*.* && git push --tags
+
 on:
     push:
         tags:

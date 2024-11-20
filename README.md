@@ -1,7 +1,7 @@
 # SRT2SoundFX
 [![PyPI package](https://img.shields.io/badge/pip%20install-srt2soundfx-brightgreen)](https://pypi.org/project/srt2soundfx/) [![version number](https://img.shields.io/pypi/v/srt2soundfx?color=green&label=version)](https://github.com/stefaner1/srt2soundfx/releases) ![License](https://img.shields.io/github/license/stefaner1/srt2soundfx?v=1.1)
 
-This project is a sound effect generator for audiobooks, videos, and recordings based on SRT files. It parses SRT files, sends the elements to ChatGPT for sound effect prompts, merges the prompts with the SRT elements, generates sounds using the ElevenLabs API, and places the audio on an MP3 timeline.
+This project is a sound effect generator for audiobooks, videos, and recordings based on SRT files. It parses SRT files, sends the elements to ChatGPT for sound effect prompts, merges the prompts with the SRT elements, generates sounds using the ElevenLabs API, and (optionally) places the audio on an MP3 timeline.
 
 ## Getting Started
 
@@ -122,6 +122,11 @@ Due to limitations of the ElevenLabs API, sound effects longer than 22 seconds w
 [Audiobook in German](https://www.youtube.com/watch?v=RZadKUaIZcs&t=283)
 
 [Audiobook in Polish](https://www.youtube.com/watch?v=1sAAcvZulqA&t=236)
+
+## To-Do List
+
+* [ ] Add other options for sound effects generation like open source: [AudioLDM](https://github.com/haoheliu/AudioLDM)
+* [ ] Add option to select open source Llama LLM or similar for creating sound effects prompts
 
 ## Developing
 
