@@ -3,7 +3,7 @@ import asyncio
 from srt2soundfx.core import Srt2SoundFX
 from dotenv import load_dotenv
 
-async def main():
+def main():
     load_dotenv()
     # Initialize the Srt2SoundFX class
     srt2soundfx = Srt2SoundFX(
@@ -19,8 +19,8 @@ async def main():
     audiobook_path = os.path.join(current_path, "tests", "resources", "audiobook.mp3")
 
     # If you only want the sounds without placing them in the audio
-    sounds = await srt2soundfx.generate_sounds(srt_path, save_dir, project_name)
+    sounds =  srt2soundfx.generate_sounds(srt_path, save_dir, project_name)
     print(sounds)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
