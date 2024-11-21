@@ -6,7 +6,7 @@ with open('requirements.txt') as f:
 
 setup(
     name="srt2soundfx",
-    version="1.0.1",
+    version="1.0.2",
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     install_requires=requirements,
